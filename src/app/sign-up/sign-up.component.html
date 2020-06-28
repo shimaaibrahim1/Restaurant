@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="container col-6 px-5">
+    <div class="my-4"><h3>Sign Up</h3></div>
+    <hr />
+    <div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Name"
+            formControlName="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="inputEmail"
+            placeholder="Email"
+            formControlName="email"
+          />
+        </div>
+        <div class="form-group form-row">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="password"
+            id="password"
+            formControlName="password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Mobile Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            placeholder="phone"
+            formControlName="phone"
+          />
+        </div>
+        <div class="form-group">
+          <button class="button btn btn-info my-3">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errors">
+      <ul>
+        <li *ngFor="let error of errors">{{ error }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

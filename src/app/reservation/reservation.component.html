@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <mat-card>
+    <h4>Reservations</h4>
+  </mat-card>
+  <br />
+  <!-- search form -->
+  <mat-card>
+    <div class="mr-5">
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="search_date" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button class="mt-3 mx-3" (click)="submit()">
+        Search
+      </button>
+    </div>
+  </mat-card>
+</div>
+
+<!-- table to show restaurant reservations -->
+<div class="container my-5">
+  <mat-card>
+    <table class="table my-4" *ngIf="books?.length > 0; else book">
+      <thead>
+        <tr>
+          <th scope="col">Table Number</th>
+          <th scope="col">User Name</th>
+          <th scope="col">Reservation Date</th>
+          <th scope="col">Reservation time</th>
+          <th scope="col">Members Number</th>
+          <th scope="col">User Mobile Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books" class="ml-2 mr-4 mb-5 mt-3 p-4">
+          <td>{{ book.tables.tableNumber }}</td>
+          <td>{{ book.user.name }}</td>
+          <td>{{ book.reservationDate | slice: 0:10 }}</td>
+          <td>{{ book.startTime }}</td>
+          <td>{{ book.membersNumber }}</td>
+          <td>{{ book.user.mobileNumber }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #book>
+      <div>
+        <h5>No books....</h5>
+      </div>
+    </ng-template>
+  </mat-card>
+</div>
